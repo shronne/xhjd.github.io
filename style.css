@@ -1,0 +1,581 @@
+/* Reset & Basic Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Helper Classes */
+.hidden {
+    display: none !important;
+}
+
+/* Header & Navigation */
+header {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    font-size: 14px;
+    color: #666;
+    letter-spacing: 1px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+}
+
+nav a:hover,
+nav a.active {
+    color: #000;
+    border-bottom-color: #000;
+}
+
+/* Main Content Grid */
+main {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    min-height: 60vh;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+    align-items: start; /* Allow ragged bottom edges for variable height items */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.project-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* 默认缩略图样式 */
+.thumbnail {
+    width: 100%;
+    height: 400px; /* Fixed height for consistency */
+    background-color: transparent; /* Match page background */
+    margin-bottom: 15px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px; /* Whitespace around content */
+    overflow: hidden; /* Ensure content stays within */
+}
+
+/* Modifier for natural height images */
+.thumbnail.flat {
+    aspect-ratio: auto;
+    background-color: transparent !important;
+}
+
+.thumbnail.flat img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain; /* Ensure image fits nicely */
+    box-shadow: none; /* Remove outer glow */
+}
+
+.project-item:hover .thumbnail {
+    transform: translateY(-5px);
+    filter: brightness(0.95);
+}
+
+/* Enhanced hover for non-book items */
+.project-item:hover .thumbnail:not(.book-scene) {
+    transform: translateY(-12px) rotate(2deg) scale(1.05);
+    filter: none;
+}
+
+.project-info h3 {
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
+.project-info p {
+    font-size: 12px;
+    color: #888;
+}
+
+/* About Section */
+#about-section {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-text h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.about-text p {
+    font-size: 16px;
+    color: #555;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+.about-visuals {
+    position: relative;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.color-block {
+    position: absolute;
+    transition: transform 0.5s ease;
+}
+
+.block-1 {
+    width: 200px;
+    height: 250px;
+    background-color: #e0e0e0;
+    top: 50px;
+    left: 50px;
+    z-index: 1;
+}
+
+.block-2 {
+    width: 180px;
+    height: 180px;
+    background-color: #c2c2c2;
+    bottom: 50px;
+    right: 50px;
+    z-index: 2;
+}
+
+.block-3 {
+    width: 100px;
+    height: 300px;
+    background-color: #a3a3a3;
+    top: 20px;
+    right: 100px;
+    z-index: 0;
+    opacity: 0.5;
+}
+
+.about-visuals:hover .block-1 {
+    transform: translate(-10px, -10px);
+}
+.about-visuals:hover .block-2 {
+    transform: translate(10px, 10px);
+}
+.about-visuals:hover .block-3 {
+    transform: rotate(5deg);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 12px;
+    color: #999;
+    margin-top: 60px;
+}
+
+@media (max-width: 768px) {
+    .about-container {
+        grid-template-columns: 1fr;
+    }
+    .about-visuals {
+        height: 300px;
+        order: -1;
+    }
+}
+
+@media (max-width: 600px) {
+    nav ul {
+        gap: 15px;
+    }
+    .logo {
+        font-size: 20px;
+    }
+}
+
+/* =================================================================
+   智能 3D 书籍系统 (Smart 3D Book System)
+   ================================================================= */
+
+.thumbnail.book-scene {
+    background-color: transparent !important;
+    perspective: 1200px;
+    overflow: visible;
+    --book-width: 160px;
+    --book-ratio: 1.4;
+    --book-thick: 20px;
+    --rotate-hover: 35deg;
+}
+
+.project-item:hover .thumbnail.book-scene {
+    transform: none; 
+    filter: none;
+}
+
+.book-3d {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: var(--book-width);
+    height: calc(var(--book-width) * var(--book-ratio));
+    transform: rotateY(0deg) rotateX(0deg);
+}
+
+.book-face {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
+    backface-visibility: visible; 
+}
+
+.book-cover {
+    width: 100%;
+    left: 0;
+    z-index: 2;
+    background-image: var(--cover-img, none); 
+    background-color: var(--cover-color, #ccc);
+    transform: translateZ(0);
+    border-radius: 0 3px 3px 0;
+}
+
+.book-spine {
+    width: var(--book-thick);
+    left: calc( -1 * var(--book-thick) );
+    z-index: 1;
+    background-image: var(--spine-img, none);
+    background-color: var(--spine-color, #999);
+    transform-origin: 100% 50%;
+    transform: rotateY(-90deg);
+    filter: brightness(0.9);
+}
+
+/* 3D Book System - Dynamic Size Support */
+.book-3d.dynamic-size {
+    width: auto;
+    height: auto;
+    display: inline-flex;
+    align-items: flex-end; /* Align bottom */
+}
+
+.book-3d.dynamic-size .book-cover {
+    position: relative;
+    width: auto;
+    height: auto;
+    background: none;
+    transform: none; /* Reset basic transform if any */
+    left: auto;
+}
+
+.book-3d.dynamic-size .book-cover img {
+    display: block;
+    max-width: 100%;
+    max-height: 340px; /* Fit within 400px thumbnail with padding */
+    width: auto;
+    height: auto;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+}
+
+.book-3d.dynamic-size .book-spine {
+    position: absolute;
+    top: 0;
+    right: 100%; /* Attach to left edge of cover */
+    height: 100%;
+    width: auto; /* Let image define width */
+    left: auto; /* Override default left */
+    background: none;
+    transform-origin: right center;
+    transform: rotateY(-90deg);
+}
+
+.book-3d.dynamic-size .book-spine img {
+    display: block;
+    height: 100%; /* Match cover height */
+    width: auto;  /* Width scales proportionally */
+    filter: brightness(0.8);
+}
+
+/* Hide top face for dynamic books as it's hard to size perfectly without JS */
+.book-3d.dynamic-size .book-top {
+    display: none;
+}
+
+
+/* =================================================================
+   Detail Page Specifics (Updated)
+   ================================================================= */
+
+/* 1. Detail Main 容器设置 */
+.detail-main {
+    position: relative; /* 为绝对定位的关闭按钮提供参考点 */
+    /* 继承之前的 padding 设置 */
+}
+
+/* 2. 关闭按钮样式 (极简版) */
+.close-btn {
+    position: absolute;
+    top: 0;          /* 与内容区域顶部对齐 */
+    right: 20px;     /* 与右侧内边距对齐 (默认 padding: 0 20px) */
+    
+    font-size: 40px; /* 大号字体 */
+    line-height: 1;
+    color: #ccc;     /* 默认浅灰色 */
+    
+    background: none; /* 去除背景 */
+    box-shadow: none; /* 去除阴影 */
+    border: none;
+    
+    z-index: 10;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #333;       /* 悬停变深色 */
+    transform: rotate(90deg); /* 悬停微旋转，增加趣味性 */
+}
+
+/* 3. 详情页响应式边距调整 & 按钮跟随 */
+@media (max-width: 768px) {
+    .detail-main {
+        padding: 0 40px; /* 页面变窄时，增加边距 */
+    }
+    
+    .close-btn {
+        right: 40px; /* 按钮右边距同步增加，保持对齐 */
+    }
+}
+/* 详情页富文本内容样式 */
+.detail-text p {
+    margin-bottom: 1em;
+}
+.detail-text h1, .detail-text h2, .detail-text h3 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+.detail-text ul, .detail-text ol {
+    margin-bottom: 1em;
+    padding-left: 2em;
+    list-style-position: outside;
+}
+.detail-text ul {
+    list-style-type: disc;
+}
+.detail-text ol {
+    list-style-type: decimal;
+}
+.detail-text a {
+    color: #000;
+    text-decoration: underline;
+}
+.detail-text img {
+    max-width: 100%;
+    height: auto;
+    margin: 1em 0;
+}
+
+/* Admin Panel Styles */
+.btn-primary, .btn-secondary, .btn-danger {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+.btn-primary { background: #333; color: #fff; }
+.btn-primary:hover { background: #000; }
+.btn-secondary { background: #eee; color: #333; }
+.btn-secondary:hover { background: #ddd; }
+.btn-danger { background: #ff4d4f; color: #fff; margin-right: auto; }
+.btn-danger:hover { background: #d9363e; }
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.close-modal {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #999;
+}
+.close-modal:hover { color: #333; }
+
+/* Form */
+.edit-form { display: flex; flex-direction: column; gap: 20px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.edit-form label { font-weight: bold; font-size: 14px; color: #555; }
+.edit-form input[type="text"],
+.edit-form select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+.img-preview {
+    height: 100px;
+    background: #f5f5f5;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px dashed #ccc;
+    margin-top: 5px;
+}
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+/* Detail Page Centering */
+.detail-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+}
+
+.detail-header h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.detail-intro {
+    font-size: 14px;
+    color: #999;
+    letter-spacing: 1px;
+}
+
+/* Quill Content Overrides */
+.ql-align-center {
+    text-align: center;
+}
+.ql-align-right {
+    text-align: right;
+}
+.ql-align-justify {
+    text-align: justify;
+}
+/* Ensure images in detail content are responsive */
+#project-detail-text img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block; /* Allow alignment */
+}
+/* Fix Quill container default font */
+.ql-container {
+    font-family: inherit;
+    font-size: inherit;
+}
+.ql-editor {
+    padding: 0;
+    line-height: 1.8;
+}
+
+.project-item:hover .book-3d {
+    transform: perspective(1000px) rotateY(var(--rotate-hover)) rotateX(5deg) translateX(20px) translateZ(20px);
+    box-shadow: 20px 20px 50px rgba(0,0,0,0.15);
+}
+
+/* Drag and Drop Styles for Admin */
+.project-item.dragging {
+    opacity: 0.4;
+    border: 2px dashed #666;
+}
+
+.project-item.over {
+    border: 2px solid #333;
+    transform: scale(1.02);
+    transition: transform 0.2s;
+}
+
+.drag-handle:hover {
+    background-color: #f0f0f0 !important;
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "category": "books",
+    "title": "摩比爱数学",
+    "desc": "童书",
+    "type": "3d",
+    "coverImg": "images/1-cover.png",
+    "spineImg": "images/1-spine.png",
+    "detail": "<h1 class=\"ql-align-center\">摩比爱数学封面升级</h1><h1 class=\"ql-align-center\"><strong>摩比爱</strong><strong style=\"color: rgb(240, 102, 102);\">数学封面升级</strong></h1><h1 class=\"ql-align-center\"><strong style=\"color: rgb(240, 102, 102);\">cesium</strong></h1><p class=\"ql-align-center\"><br></p><p class=\"ql-align-center\"><strong style=\"color: rgb(240, 102, 102); background-color: rgb(250, 204, 204);\">测试</strong><img src=\"images/1-detail-1.png\" width=\"329\" style=\"display: block; margin: auto;\"></p>",
+    "color": "#cccccc",
+    "_originalIndex": 0,
+    "year": "2025",
+    "client": "学而思",
+    "publisher": "",
+    "introtype": "童书",
+    "label_year": "年份",
+    "label_client": "委托方",
+    "label_publisher": "出版社",
+    "label_introtype": "类型"
+  },
+  {
+    "id": 4,
+    "title": "英语启蒙每日一读",
+    "desc": "",
+    "intro": "年份：____ 出版社：_____ 委托方：______",
+    "category": "books",
+    "type": "3d",
+    "color": "#cccccc",
+    "detail": "<p><br></p>",
+    "coverImg": "images/4-cover.png",
+    "spineImg": "images/4-spine.png"
+  },
+  {
+    "id": 2,
+    "category": "cultural",
+    "title": "2",
+    "desc": "2",
+    "type": "flat",
+    "color": "#f82a2a",
+    "detail": "<p>测试测试测试测试测试测试测试测试测试测试测试测试测试</p>",
+    "coverImg": "images/2-cover.png",
+    "_originalIndex": 1
+  },
+  {
+    "id": 3,
+    "category": "books",
+    "title": "3",
+    "desc": "3",
+    "type": "3d"
+  }
+]
